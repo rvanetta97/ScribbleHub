@@ -6,6 +6,8 @@ const apiRoutes = require('./routes/apiRoutes')
 const PORT = process.env.PORT || 3001;
 const app = express();
 
+const { v4: uuidv4 } = require('uuid');
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -16,21 +18,13 @@ app.use('/api', apiRoutes)
 app.use('/', htmlRoutes)
 
 app.post('/api/notes', (req, res) => {
-    //grabs notes from body of request
     const newNote = req.body
-
     //gives each note a random ID
     newNote.id = uuidv4()
-
-    //adds the note object to the array
     db.push(newNote)
-
-    //update the json file with the new object
     fs.writeFileSync('./db/db.json', JSON.stringify(db))
-
-    //responds with the note object used
     res.json(db)
-})
+});
 
 // app listener - starts the server
 app.listen(PORT, () => {
