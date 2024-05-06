@@ -17,15 +17,6 @@ app.use(express.static('public'));
 app.use('/api', apiRoutes)
 app.use('/', htmlRoutes)
 
-app.post('/api/notes', (req, res) => {
-    const newNote = req.body
-    //gives each note a random ID
-    newNote.id = uuidv4()
-    db.push(newNote)
-    fs.writeFileSync('./db/db.json', JSON.stringify(db))
-    res.json(db)
-});
-
 // app listener - starts the server
 app.listen(PORT, () => {
   console.log(`The digital realm awaits! Server listening on localhost:${PORT}`);
