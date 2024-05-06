@@ -9,6 +9,7 @@ router.get('/notes',(req, res)=> {
     fs.readFile('db/db.json', 'utf-8', (err, data) => {
         if (err) {
             console.log(err);
+            res.status(500).send('Internal Server Error');
         } else{
             res.json(JSON.parse(data));
         }     
@@ -27,7 +28,6 @@ router.post('/notes', (req, res) => {
                 title: req.body.title,
                 text: req.body.text
             };
-            
             // Add the new note to the array of notes
             notes.push(newNote);
             // Write the updated array of notes back to the file
