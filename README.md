@@ -30,10 +30,13 @@ This web application allows users to create, save, view, and delete notes. It pr
 5. Access the application in your web browser at http://localhost:3000/notes.
 
 ##License
+
 This project is licensed under the MIT license. See the LICENSE file for details.
 
 ##Author
+
 Rachel Vanetta
 
 ##Feedback
+
 Feedback and contributions are welcome! Feel free to open an issue or submit a pull request.
